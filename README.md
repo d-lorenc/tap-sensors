@@ -1,4 +1,4 @@
-# TAP Sensors Demo App
+# TAP Sensors Demo App (TAP Developer Sandbox version)
 
 An application to demonstrate the capabilities of [VMware Tanzu Application Platform](https://tanzu.vmware.com/application-platform).
 
@@ -28,36 +28,8 @@ Features:
 
 - Access to an instance of VMware Tanzu Application Platform (`dev`, `light` or `full`)
 - A namespace
-- [Postgres Operator](https://docs.vmware.com/en/VMware-SQL-with-Postgres-for-Kubernetes/2.0/vmware-postgres-k8s/GUID-install-operator.html) package installed on TAP
-- [Rabbit Cluster Operator](https://www.rabbitmq.com/kubernetes/operator/install-operator.html) package installed on TAP
 - Privileges of:
-  - platform operator, to create ClusterInstanceClass and ClusterRole k8s resources
   - app operator, to create RabbitmqCluster, Postgres and ResourceClaim k8s resources
-
-### Service Operator - Make services available
-To run this application with VMware Tanzu Application Platform, you need a RabbitMQ cluster running in the same
-Kubernetes namespace (e.g. provisioned via the [RabbitMQ Cluster Operator for Kubernetes](https://www.rabbitmq.com/kubernetes/operator/operator-overview.html)).
-
-You also need an instance of PostgreSQL database running in the same Kubernetes namespace
-(e.g. provisioned via the [VMware Postgres Operator](https://docs.vmware.com/en/VMware-SQL-with-Postgres-for-Kubernetes/2.0/vmware-postgres-k8s/GUID-index.html)).
-
-#### RabbitMQ Cluster
-
-To make services available for an app operator to claim, the service operator needs to run the following commands:
-```shell
-kubectl apply -f config/service-operator/rabbit-claims-rbac.yml
-kubectl apply -f config/service-operator/rabbit-cluster-instance-class.yml
-kubectl apply -f config/service-operator/sensors-rabbit.yml
-```
-
-#### PostgreSQL
-
-To make services available for an app operator to claim, the service operator needs to run the following commands:
-```shell
-kubectl apply -f config/service-operator/postgres-cluster-instance-class.yml
-kubectl apply -f config/service-operator/postgres-claims-rbac.yml
-kubectl apply -f config/service-operator/sensors-db.yml
-```
 
 ### App Operator
 
@@ -65,14 +37,14 @@ kubectl apply -f config/service-operator/sensors-db.yml
 
 To claim RabbitMQ service:
 ```shell
-kubectl apply -f config/app-operator/sensors-rabbit-claim.yml
+tanzu service class-claim create sensors-rabbit-claim --class rabbitmq-unmanaged --namespace apps
 ```
 
 #### PostgreSQL
 
 To claim Postgres database:
 ```shell
-kubectl apply -f config/app-operator/sensors-db-claim.yml
+tanzu service class-claim create sensors-db-claim --class postgresql-unmanaged --parameter --namespace apps
 ```
 
 ## Deploying application/services
@@ -177,7 +149,7 @@ You can also run individual services with these commands
 ./gradlew sensor:bootRun
 ```
 
-### Valid the application is working
+### Validate the application is working
 
 #### Sensor service
 After the sensor service starts successfully it generates a sensor event every second. Each time a sensor event is

@@ -2,7 +2,7 @@ apiVersion: carto.run/v1alpha1
 kind: Workload
 metadata:
   name: tap-sensors-hub
-  namespace: my-apps
+  namespace: apps
   labels:
     app.kubernetes.io/part-of: tap-sensors
     apps.tanzu.vmware.com/workload-type: web
@@ -12,7 +12,7 @@ spec:
     git:
       url: https://github.com/d-lorenc/tap-sensors.git
       ref:
-        branch: main
+        branch: tap-developer-sandbox
     subPath: hub
   build:
     env:
@@ -25,11 +25,11 @@ spec:
   serviceClaims:
     - name: sensors-rabbit
       ref:
-        apiVersion: rabbitmq.com/v1beta1
-        kind: RabbitmqCluster
+        apiVersion: services.apps.tanzu.vmware.com/v1alpha1
+        kind: ClassClaim
         name: sensors-rabbit-claim
     - name: sensors-db
       ref:
         apiVersion: services.apps.tanzu.vmware.com/v1alpha1
-        kind: ResourceClaim
+        kind: ClassClaim
         name: sensors-db-claim

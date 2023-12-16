@@ -4,8 +4,3 @@ spring:
     generateSensorData-out-0.destination: sensor-data
 server:
   port: 8081
-management:
-  wavefront:
-    uri: https://wavefront.surf
-    application.name: tap-sensors
-wavefront.freemium-account: true

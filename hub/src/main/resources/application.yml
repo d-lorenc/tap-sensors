@@ -7,8 +7,3 @@ spring:
     password: password
   cloud.stream.bindings:
     receiveSensorData-in-0.destination: sensor-data
-management:
-  wavefront:
-    uri: https://wavefront.surf
-    application.name: tap-sensors
-wavefront.freemium-account: true
