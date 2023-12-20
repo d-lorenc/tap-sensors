@@ -21,7 +21,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.cloud:spring-cloud-starter-stream-rabbit'
 //    TODO: we shouldn't need to do this, according to docs. Follow up with Tanzu product/Buildpack team(s)
-    implementation 'org.springframework.cloud:spring-cloud-bindings'
+    implementation 'org.springframework.cloud:spring-cloud-bindings:2.0.2'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.cloud:spring-cloud-stream-test-binder'
