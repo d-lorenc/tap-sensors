@@ -22,15 +22,15 @@ services:
       - POSTGRES_USER=user
       - POSTGRES_PASSWORD=password
     ports:
-      - '5432:5432'
+      - "5432:5432"
     networks:
       - postgres_go_net
 
   rabbitmq:
     image: rabbitmq:3-management-alpine
     ports:
-      - 5672:5672
-      - 15672:15672
+      - "5672:5672"
+      - "15672:15672"
     networks:
       - rabbitmq_go_net
 
