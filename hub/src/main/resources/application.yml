@@ -7,3 +7,12 @@ spring:
     password: password
   cloud.stream.bindings:
     receiveSensorData-in-0.destination: sensor-data
+management:
+  health:
+    probes:
+      enabled: true
+  endpoint:
+    health:
+      probes:
+        add-additional-paths: true
+
