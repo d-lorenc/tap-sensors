@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
@@ -12,7 +13,7 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
-                .authorizeHttpRequests(authorize -> authorize.requestMatchers("/livez").permitAll())
+                .authorizeHttpRequests(authorize -> authorize.requestMatchers(new AntPathRequestMatcher("/readyz")).permitAll())
                 .authorizeHttpRequests(authorize -> authorize.anyRequest().authenticated())
                 .formLogin(formLogin -> {
                     formLogin.loginPage("/login");
@@ -20,6 +21,4 @@ public class SecurityConfig {
                 });
         return httpSecurity.build();
     }
-
-
 }

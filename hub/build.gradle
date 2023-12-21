@@ -46,7 +46,9 @@ dependencyManagement {
     }
 }
 
+// make buildpacks happy
 jar.enabled = false
+bootJar.enabled = true
 
 
 tasks.named('test') {
