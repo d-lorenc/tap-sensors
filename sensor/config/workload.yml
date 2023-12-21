@@ -21,7 +21,7 @@ spec:
   params:
     - name: annotations
       value:
-        autoscaling.knative.dev/minScale: "1"
+        autoscaling.knative.dev/minScale: "3"
   serviceClaims:
     - name: sensors-rabbit
       ref:
