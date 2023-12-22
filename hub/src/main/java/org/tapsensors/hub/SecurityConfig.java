@@ -14,8 +14,7 @@ public class SecurityConfig {
     @Order(2)
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
-                .oauth2Login(customizer -> customizer
-                        .defaultSuccessUrl("/dashboard"))
+                .oauth2Login(customizer -> customizer.defaultSuccessUrl("/dashboard"))
                 .authorizeHttpRequests(http -> http.requestMatchers("/readyz", "/livez", "/").permitAll())
                 .authorizeHttpRequests(authorize -> authorize.anyRequest().authenticated());
 
