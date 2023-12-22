@@ -4,11 +4,12 @@ metadata:
   name: developer-defined-tekton-pipeline
   namespace: apps
   labels:
-    apps.tanzu.vmware.com/pipeline: test
+    apps.tanzu.vmware.com/pipeline: java-monorepo-test
 spec:
   params:
     - name: source-url
     - name: source-revision
+    - name: subpath
   tasks:
     - name: test
       params:
@@ -16,14 +17,18 @@ spec:
           value: $(params.source-url)
         - name: source-revision
           value: $(params.source-revision)
+        - name: subpath
+          value: $(params.subpath)
       taskSpec:
         params:
           - name: source-url
           - name: source-revision
+          - name: subpath
         steps:
           - name: test
             image: gradle
             script: |-
               cd `mktemp -d`
               wget -qO- $(params.source-url) | tar xvz -m
-              ./gradlew test
+              cd $(params.subpath)
+              ./gradlew test --info

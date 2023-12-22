@@ -22,6 +22,12 @@ spec:
     - name: annotations
       value:
         autoscaling.knative.dev/minScale: "3"
+    - name: testing-pipeline-matching-labels
+      value:
+        apps.tanzu.vmware.com/pipeline: java-monorepo-test
+    - name: testing-pipeline-params
+      value:
+        subpath: sensor
   serviceClaims:
     - name: sensors-rabbit
       ref:
