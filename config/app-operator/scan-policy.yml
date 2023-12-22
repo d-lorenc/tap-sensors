@@ -4,13 +4,13 @@ metadata:
   name: scan-policy
   namespace: apps
   labels:
-    'app.kubernetes.io/part-of': 'enable-in-gui'
+    'app.kubernetes.io/part-of': 'scan-system'
 spec:
   regoFile: |
     package main
 
     # Accepted Values: "Critical", "High", "Medium", "Low", "Negligible", "UnknownSeverity"
-    notAllowedSeverities := []
+    notAllowedSeverities := ["Critical", "High", "UnknownSeverity"]
     ignoreCves := []
 
     contains(array, elem) = true {
