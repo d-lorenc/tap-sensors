@@ -38,8 +38,3 @@ spec:
         apiVersion: services.apps.tanzu.vmware.com/v1alpha1
         kind: ClassClaim
         name: appsso-tap-sensor-hub
-    - name: sensor-redis
-      ref:
-        apiVersion: services.apps.tanzu.vmware.com/v1alpha1
-        kind: ClassClaim
-        name: sensors-redis

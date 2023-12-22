@@ -1,8 +1,6 @@
 spring:
   application.name: hub
   jpa.hibernate.ddl-auto: update
-  session:
-    store-type: redis
   datasource:
     url: jdbc:postgresql://localhost:5432/sensor-db
     username: user

@@ -8,9 +8,9 @@ spec:
     name: test-login
   parameters:
     workloadRef:
-      name: tap-sensor-hub
+      name: tap-sensors-hub
     redirectPaths:
-      - /login/oauth2/code/tap-sensor-hub
+      - /login/oauth2/code/sso
     scopes:
       - name: openid
     authorizationGrantTypes:
