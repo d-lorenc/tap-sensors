@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+tanzu service class-claim create sensors-db-claim --class postgresql-unmanaged --namespace apps
+tanzu service class-claim create sensors-rabbit-claim --class rabbitmq-unmanaged --namespace apps
