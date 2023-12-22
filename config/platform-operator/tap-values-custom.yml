@@ -1,0 +1,110 @@
+shared:
+  ingress_domain: tapv-cosmic-goat.tapsandbox.com
+  ingress_issuer: gcloud-public-ca
+ceip_policy_disclosed: true
+cnrs:
+  ingress_issuer: ""
+  default_tls_secret: cert-manager/tap-wildcard-cert
+  domain_template: '{{.Name}}-{{.Namespace}}.{{.Domain}}'
+appsso:
+  default_workload_domain_template: '{{.Name}}-{{.Namespace}}.{{.Domain}}'
+profile: full
+excluded_packages:
+- policy.apps.tanzu.vmware.com
+- learningcenter.tanzu.vmware.com
+- workshops.learningcenter.tanzu.vmware.com
+- eventing.tanzu.vmware.com
+supply_chain: testing_scanning
+contour:
+  envoy:
+    service:
+      loadBalancerIP: 35.196.148.72
+cartographer:
+  cartographer:
+    concurrency:
+      max_deliveries: 10
+      max_workloads: 10
+    resources:
+      limits:
+        cpu: 3
+        memory: 5Gi
+      requests:
+        cpu: 1
+        memory: 2Gi
+buildservice:
+  kp_default_repository: us-east1-docker.pkg.dev/tap-sandbox-dev/tapv-cosmic-goat/buildservice
+  kp_default_repository_username: _json_key_base64
+  kp_default_repository_password: ewogICJ0eXBlIjogInNlcnZpY2VfYWNjb3VudCIsCiAgInByb2plY3RfaWQiOiAidGFwLXNhbmRib3gtZGV2IiwKICAicHJpdmF0ZV9rZXlfaWQiOiAiNjczZDYwZGU1Y2FlYjNjYjZlYjM5ZWJhOGI0ZTQ3M2NkMDAyY2E3YiIsCiAgInByaXZhdGVfa2V5IjogIi0tLS0tQkVHSU4gUFJJVkFURSBLRVktLS0tLVxuTUlJRXZnSUJBREFOQmdrcWhraUc5dzBCQVFFRkFBU0NCS2d3Z2dTa0FnRUFBb0lCQVFEVVFtTnpjVTRyaEY3aVxuN1Z6Tnp5Q1FxbTRVblVhYW1kbU9XR3VXb2hCdkplc0xVNjYyOWpDNEhmSEpKWmhZSXNaZ0RCdzR2Y01SWDdCUlxuM05HR0g4VGRyVjNuYnk0eEc4bFVvMWVpTnB5ZTNsMitCaWRYLzVkTHhtejc5TFJtcSsxU3pIdTZ5NnY1ZHNKdlxub1lSUzhkWmFRY25yYk1VSVN4enFXZG0xN05BUWxDbHMrOFY1L0R5QUZEOFdmeXpRY0hQOUJBQ0lGK0Q4QVdIQVxuR1YxRHlyeVhhZnAvWWxheGV4bktobVptOHNQRnVjbUVtRHl1dE5vRzlMWlloRGNWWmhnZCtDaWJJWHg4SW12RVxuYVJVWkZaeS9FM3JYTjdNUFgyaERZMDZHN25PZW4ycGZsdUlMMGhXazA2cEQranlvZnIvZXlySWdqVU5JeTRhbVxuejIzcW0vWXRBZ01CQUFFQ2dnRUFHc215SVd5b1QrZXB6ZnZrM1hpSmhKaHR3aDVEUGRteTBqc29nTjg5TWJuWVxuV3hxWmp5K3M0Rit2RnhLdWtsajVMai81QTlRM0hTYzFhbTl5NWZsMmIvK2tQVVFUMFZEUGJPWWNkalZzT01TWlxua2hUV3ZFMWVlOHEwRUd4R3BEcUlmZzJlZyttV2I2cGtTWkJaMGRvQmtteUJIandnOWJYOUZUcDN0blVIb1QvR1xuelBhNkdvdmZ6YVhtM3R5bCtYT3RyOVRtcmZ4SXZEYnNDcGRWNjBDbXR0cE93U0x3UGhWM0tYQnJFbkJWSDBFYVxuZVVQZ1N6ejJYdlo3c0ZiWi95L2FCNUZSMk9mb203QnZBUCtrLzk2eDhTTXhMeGl5QkRWR29tQTF1VHptMTJySVxuMStvejZZNTRCTnpKVW13TXl0bDZDRDdrc0UvQ2YzZ3BUY2psQm9KeElRS0JnUUR0MFJUakdsQ2RsUm1VVEZvblxua0RBQzFJZlR1MG1sTGNLOStTc1dPZkJ6bDg4dU8xb28vNjU0NnR0YU94UkVhMmgrcXJUUzZkd1p2L0l6d1RDR1xuMFJyemhReDcvQktGb3Q2ZSs4c0hOcWcvMWNXVjFNMXF1ZWZWb2JjZ1RXVzFSVFE0WnJ3b3N1aGlHU2ZzMmJIOFxuYmJYTlBNRDI4ZzRTMXBIU2ZzRFdLYnRQTlFLQmdRRGtmUTdQUkthQXdVUUJsY0l5aDZycE5BcndReXBTc2IrN1xuQ1djb2lIVXE1ZUlmVTJ5aXFOMEdiYmU0eXRyRUUvVXdhRGs1Y3pnM3VMcnVGMXRLem5jOS90MDFCSVpyMDdFNVxuR2NDUXMxd0JST0s2LzlHb09ZSkJoTFR2MEFnekRyNktJWjI1VXVXQlRRL2N3em15Y1o5cUhVb002eElQWWdSeFxuZFNhdHp6R1NHUUtCZ1FDRVVKTHRkQ09zT1Z1Yy9nb2Uvd01uWC9ZZVlKS3QrMUxoZmJOeVQxUXdEQ095VmtWb1xua0RFVGg1LzVpT3RTMGV1MnBlV3JmMy85TjZWYkZENmFrOWNKN0ZtdzFlTzhSSXpXS2NPaFJOREJpMysrU0VMdVxuQVhjeWppSWtMOHZKMmpJZXUxSXUxck9pZU5xVTFkNUlVd1lXcFptN0M1dTI4WGo2ZzVsb3pwa3ZqUUtCZ0hLblxuWm1VUGQ5V29KVzMrTGlLWS9XUmtIeEVOUXhHWDdEUDR0ZkVhK0dCOFZvbU5uVGZLTUk3blE0ZlJFeEhOU2YzdVxuYnJpclhveG5nRFcxTnJSRkFvVHpmU0Q3a2xCTk8rTUJUeVhOT3QvUUowM2F6T1B6WjY5azNqNXdUNHovV3hHSlxuYU5IMERRSmpIeENTVGtPQ3pKRzgvTW1hczhkUVVoWjB5T0h5MUZjUkFvR0JBT1RrR3IzRFNOSkNZb3Z5b0pjWVxuK3l1MWRxNmhRNWwvQS9ZYTNuNUFNVkVYdWJ4R0RkLzQyZkJrc0FtcS9ZMDhYRVBWdWRLZ2xUcW5kM1FZQnRFZVxuR2plYUZtZVo0NnFXMHRNazVDSWZiVXFEK2VPY3JxZmR4YnFrSGtuTHZRRDZ6OXFOVjF2YzMxbStMTzdyeXFwVFxuNzFIVmxYSU5yaUNKMVJHWG14ZlNEckptXG4tLS0tLUVORCBQUklWQVRFIEtFWS0tLS0tXG4iLAogICJjbGllbnRfZW1haWwiOiAiY29zbWljLWdvYXQtYnVpbGRAdGFwLXNhbmRib3gtZGV2LmlhbS5nc2VydmljZWFjY291bnQuY29tIiwKICAiY2xpZW50X2lkIjogIjEwNDY2ODQ2NzMwNjE3NDgxNDUzMiIsCiAgImF1dGhfdXJpIjogImh0dHBzOi8vYWNjb3VudHMuZ29vZ2xlLmNvbS9vL29hdXRoMi9hdXRoIiwKICAidG9rZW5fdXJpIjogImh0dHBzOi8vb2F1dGgyLmdvb2dsZWFwaXMuY29tL3Rva2VuIiwKICAiYXV0aF9wcm92aWRlcl94NTA5X2NlcnRfdXJsIjogImh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL29hdXRoMi92MS9jZXJ0cyIsCiAgImNsaWVudF94NTA5X2NlcnRfdXJsIjogImh0dHBzOi8vd3d3Lmdvb2dsZWFwaXMuY29tL3JvYm90L3YxL21ldGFkYXRhL3g1MDkvY29zbWljLWdvYXQtYnVpbGQlNDB0YXAtc2FuZGJveC1kZXYuaWFtLmdzZXJ2aWNlYWNjb3VudC5jb20iLAogICJ1bml2ZXJzZV9kb21haW4iOiAiZ29vZ2xlYXBpcy5jb20iCn0K
+  controller:
+    resources:
+      limits:
+        memory: 2Gi
+      requests:
+        memory: 1Gi
+tap_gui:
+  service_type: ClusterIP
+  metadataStoreAutoconfiguration: true
+  app_config:
+    auth:
+      allowGuestAccess: true
+  tls:
+    secretName: tap-wildcard-cert
+    namespace: cert-manager
+metadata_store:
+  ns_for_export_app_cert: apps
+  app_service_type: ClusterIP
+  graphql:
+    tls:
+      secretName: tap-wildcard-cert
+      namespace: cert-manager
+  cloudevent_handler:
+    tls:
+      secretName: tap-wildcard-cert
+      namespace: cert-manager
+  tls:
+    secretName: tap-wildcard-cert
+    namespace: cert-manager
+namespace_provisioner:
+  controller: true
+local_source_proxy:
+  repository: us-east1-docker.pkg.dev/tap-sandbox-dev/tapv-cosmic-goat/lsp
+  push_secret:
+    name: lsp-credentials
+    namespace: tap-install
+    create_export: true
+  pull_secret:
+    name: lsp-credentials
+    namespace: tap-install
+    create_export: true
+package_overlays:
+- name: cert-manager
+  secrets:
+  - name: cert-manager-custom-overlays
+- name: tap-telemetry
+  secrets:
+  - name: tap-telemetry-custom-overlays
+- name: appsso
+  secrets:
+  - name: appsso-custom-overlays
+- name: tap-gui
+  secrets:
+  - name: patch-tap-gui-timeout
+- name: contour
+  secrets:
+  - name: contour-custom-overlays
+tap_telemetry:
+  installed_for_vmware_internal_use: "false"
+ootb_supply_chain_testing_scanning:
+  registry:
+    server: us-east1-docker.pkg.dev
+    repository: tap-sandbox-dev/tapv-cosmic-goat
+  gitops:
+    ssh_secret: ""
+scanning:
+  resources:
+    limits:
+      cpu: 500m
+      memory: 3Gi
+    requests:
+      cpu: 200m
+      memory: 1Gi
