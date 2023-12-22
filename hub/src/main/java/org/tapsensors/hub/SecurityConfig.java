@@ -15,8 +15,8 @@ public class SecurityConfig {
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 .formLogin(formLogin -> {
+                    formLogin.defaultSuccessUrl("/dashboard");
                     formLogin.permitAll();
-                    formLogin.defaultSuccessUrl("/");
                 })
                 .authorizeHttpRequests(http -> http.requestMatchers("/readyz", "/livez").permitAll())
                 .authorizeHttpRequests(authorize -> authorize.anyRequest().authenticated());
