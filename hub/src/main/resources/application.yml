@@ -14,6 +14,11 @@ spring:
   cloud.stream.bindings:
     receiveSensorData-in-0.destination: sensor-data
 management:
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: '*'
   endpoint:
     health:
       probes:
