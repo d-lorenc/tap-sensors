@@ -114,5 +114,5 @@ running and emitting events, your hub service should receive them and log them. 
 
 Also, the service has healthcheck endpoint: [http://localhost:8080/actuator/health](http://localhost:8080/actuator/health)
 
-Finally, you can open [Hub's dashboard](http://localhost:8080/dashboard) in your browser, and you should see a table
+Finally, you can open [Hub's dashboard](http://localhost:8080/) in your browser, and you should see a table
 containing realtime sensor data (refreshes every few seconds).

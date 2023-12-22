@@ -10,7 +10,7 @@ metadata:
 spec:
   source:
     git:
-      url: https://github.com/d-lorenc/tap-sensors.git
+      url: https://github.com/gpstines/tap-sensors.git
       ref:
         branch: tap-developer-sandbox
     subPath: hub
