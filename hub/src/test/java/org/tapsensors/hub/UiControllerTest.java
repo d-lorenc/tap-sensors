@@ -34,8 +34,7 @@ class UiControllerTest {
     @Test
     void dashboard_notAuthenticated_forcesLogin() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get("/dashboard"))
-                .andExpect(status().is3xxRedirection())
-                .andExpect(header().string("Location", "http://localhost/login"));
+                .andExpect(status().isForbidden());
     }
 
     @Test

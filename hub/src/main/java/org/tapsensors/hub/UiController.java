@@ -17,6 +17,6 @@ public class UiController {
     @GetMapping({"/dashboard"})
     public String fetchUI(Model model) {
         model.addAttribute("sensors", sensorRepository.findAllByOrderByIdAsc());
-        return "index";
+        return "dashboard";
     }
 }

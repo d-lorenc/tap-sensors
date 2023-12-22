@@ -14,10 +14,6 @@ public class SecurityConfig {
     @Order(2)
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
-                .formLogin(formLogin -> {
-                    formLogin.defaultSuccessUrl("/dashboard");
-                    formLogin.permitAll();
-                })
                 .authorizeHttpRequests(http -> http.requestMatchers("/readyz", "/livez").permitAll())
                 .authorizeHttpRequests(authorize -> authorize.anyRequest().authenticated());
 
