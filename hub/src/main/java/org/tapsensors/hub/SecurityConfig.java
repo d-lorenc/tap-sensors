@@ -14,7 +14,7 @@ public class SecurityConfig {
     @Order(2)
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
-                .authorizeHttpRequests(http -> http.requestMatchers("/readyz", "/livez").permitAll())
+                .authorizeHttpRequests(http -> http.requestMatchers("/readyz", "/livez", "/").permitAll())
                 .authorizeHttpRequests(authorize -> authorize.anyRequest().authenticated());
 
         return httpSecurity.build();
