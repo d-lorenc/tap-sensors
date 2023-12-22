@@ -1,0 +1,18 @@
+apiVersion: services.apps.tanzu.vmware.com/v1alpha1
+kind: ClassClaim
+metadata:
+  name: appsso-tap-sensor-hub
+  namespace: apps
+spec:
+  classRef:
+    name: test-login
+  parameters:
+    workloadRef:
+      name: tap-sensor-hub
+    redirectPaths:
+      - /login/oauth2/code/tap-sensor-hub
+    scopes:
+      - name: openid
+    authorizationGrantTypes:
+      - authorization_code
+    clientAuthenticationMethod: client_secret_basic
