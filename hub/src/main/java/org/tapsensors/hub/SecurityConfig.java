@@ -24,7 +24,7 @@ public class SecurityConfig {
         httpSecurity
                 .oauth2ResourceServer(resourceServer -> resourceServer.jwt(Customizer.withDefaults()))
                 .authorizeHttpRequests(http ->
-                        http.requestMatchers("/readyz", "livez").permitAll()
+                        http.requestMatchers("/readyz", "/livez").permitAll()
                                 .anyRequest().authenticated());
         return httpSecurity.build();
     }

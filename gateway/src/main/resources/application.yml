@@ -10,3 +10,4 @@ spring:
           uri: http://hub-ui.apps.svc.cluster.local/api/
           predicates:
             - Path=/**
+    # TODO Add TokenRelay default filter thing
