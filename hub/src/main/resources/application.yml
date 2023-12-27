@@ -12,7 +12,9 @@ spring:
     username: user
     password: password
   cloud.stream.bindings:
-    receiveSensorData-in-0.destination: sensor-data
+    receiveSensorData-in-0:
+      destination: sensor-data
+      group: hub-group
 management:
   endpoints:
     enabled-by-default: true
