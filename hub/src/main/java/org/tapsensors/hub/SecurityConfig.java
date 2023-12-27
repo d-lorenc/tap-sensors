@@ -2,7 +2,6 @@ package org.tapsensors.hub;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.annotation.Order;
 import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -14,10 +13,10 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
-                .oauth2ResourceServer(Customizer.withDefaults())
+                .oauth2ResourceServer(rs -> rs.jwt(Customizer.withDefaults()))
                 .authorizeHttpRequests(http ->
                         http.requestMatchers("/readyz", "livez").permitAll()
-                        .anyRequest().authenticated());
+                                .anyRequest().authenticated());
         return httpSecurity.build();
     }
 }
