@@ -16,8 +16,7 @@ public class SecurityConfig {
 
     @Bean
     JwtDecoder jwtDecoder(OAuth2ClientProperties oAuth2ClientProperties){
-        String issuerUri = oAuth2ClientProperties.getProvider().get("sso").getIssuerUri();
-        System.out.println("issuer uri = " + issuerUri);
+        String issuerUri = oAuth2ClientProperties.getProvider().get("appsso").getIssuerUri();
         return JwtDecoders.fromIssuerLocation(issuerUri);
     }
     @Bean
