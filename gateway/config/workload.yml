@@ -22,3 +22,9 @@ spec:
     - name: annotations
       value:
         autoscaling.knative.dev/minScale: "1"
+  serviceClaims:
+    - name: sso
+      ref:
+        apiVersion: services.apps.tanzu.vmware.com/v1alpha1
+        kind: ClassClaim
+        name: appsso-tap-sensors-gateway
