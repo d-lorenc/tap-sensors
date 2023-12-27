@@ -1,3 +1,4 @@
 rootProject.name = 'tap-sensors'
 include 'hub', 'sensor'
+include 'gateway'
 

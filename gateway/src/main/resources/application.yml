@@ -1,0 +1,11 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: hub_api_route
+          uri: http://tap-sensors-hub.apps.svc.cluster.local/api/
+          predicates:
+            - Path=/api/**
+        - id: hub_ui_route
+          uri: http://hub-ui.apps.svc.cluster.local/api/
+

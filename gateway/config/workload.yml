@@ -1,0 +1,24 @@
+apiVersion: carto.run/v1alpha1
+kind: Workload
+metadata:
+  name: tap-sensors-gateway
+  namespace: apps
+  labels:
+    app.kubernetes.io/part-of: tap-sensors
+    apps.tanzu.vmware.com/workload-type: web
+    apps.tanzu.vmware.com/has-tests: true
+spec:
+  source:
+    git:
+      url: https://github.com/gpstines/tap-sensors.git
+      ref:
+        branch: tap-developer-sandbox
+    subPath: gateway
+  build:
+    env:
+      - name: BP_JVM_VERSION
+        value: "17"
+  params:
+    - name: annotations
+      value:
+        autoscaling.knative.dev/minScale: "1"
