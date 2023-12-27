@@ -14,8 +14,10 @@ public class SecurityConfig {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
-                .authorizeHttpRequests(authorize -> authorize.anyRequest().permitAll());
-//                .oauth2ResourceServer(Customizer.withDefaults())
+                .oauth2ResourceServer(Customizer.withDefaults())
+                .authorizeHttpRequests(http ->
+                        http.requestMatchers("/readyz", "livez").permitAll()
+                        .anyRequest().authenticated());
         return httpSecurity.build();
     }
 }
