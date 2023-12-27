@@ -8,4 +8,5 @@ spring:
             - Path=/api/**
         - id: hub_ui_route
           uri: http://hub-ui.apps.svc.cluster.local/api/
-
+          predicates:
+            - Path=/**
