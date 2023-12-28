@@ -29,7 +29,7 @@ class SensorDataControllerTest {
     @Test
     void getSensorData_notAuthenticated_401() throws Exception {
         mockMvc.perform(get("/api/sensor-data"))
-                .andExpect(status().isForbidden());
+                .andExpect(status().isUnauthorized());
     }
     @Test
     @WithMockUser
