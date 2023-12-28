@@ -38,13 +38,15 @@ The following backing services are required:
 
 In order to instantiate claims for each of these microservices, run:
 
+
+## Deploying Application Workloads
+
 ```shell
 kubectl apply -f config/app-operator/backing-services
 ```
 
 This will apply each of the service claim definitions to the running cluster.
 
-## Deploying application/services
 
 ### Sensor service
 To deploy the sensor service, execute the following command:
