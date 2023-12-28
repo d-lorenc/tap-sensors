@@ -1,0 +1,28 @@
+apiVersion: carto.run/v1alpha1
+kind: Workload
+metadata:
+  name: hub-ui
+  namespace: apps
+  labels:
+    apps.tanzu.vmware.com/workload-type: web
+    app.kubernetes.io/part-of: tap-sensors
+    apps.tanzu.vmware.com/has-tests: "true"
+spec:
+  params:
+    - name: annotations
+      value:
+        autoscaling.knative.dev/minScale: "1"
+    - name: clusterBuilder
+      value: base-jammy
+  build:
+    env:
+      - name: BP_NODE_RUN_SCRIPTS
+        value: "build"
+      - name: BP_WEB_SERVER_ROOT
+        value: "dist"
+  source:
+    git:
+      url: https://github.com/gpstines/tap-sensors.git
+      ref:
+        branch: tap-developer-sandbox
+    subPath: ui

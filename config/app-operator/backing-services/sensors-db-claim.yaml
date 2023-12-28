@@ -6,3 +6,5 @@ metadata:
 spec:
   classRef:
     name: postgresql-unmanaged
+
+---

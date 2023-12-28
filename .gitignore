@@ -20,15 +20,15 @@ build/
 *.iml
 *.ipr
 
+/ui/node_modules/
+/ui/dist/
+
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/
 /dist/
 /nbdist/
 /.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
 
 ### VS Code ###
 .vscode/
