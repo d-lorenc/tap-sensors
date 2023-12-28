@@ -8,6 +8,7 @@ import org.tapsensors.hub.sensor.SensorData;
 import org.tapsensors.hub.sensor.SensorRepository;
 
 import java.util.List;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/sensor-data")
@@ -20,17 +21,19 @@ public class SensorDataController {
 
     static class SensorDataDTO {
         private List<SensorData> data;
-        public SensorDataDTO(List<SensorData> data){
+
+        public SensorDataDTO(List<SensorData> data) {
             this.data = data;
         }
+
         @JsonProperty("data")
-        public List<SensorData> getData(){
+        public List<SensorData> getData() {
             return this.data;
         }
     }
+
     @GetMapping
-    public SensorDataDTO list(){
-        List<SensorData> sensorData = sensorRepository.findAllByOrderByIdAsc();
-        return new SensorDataDTO(sensorData);
+    public SensorDataDTO list() {
+        return new SensorDataDTO(sensorRepository.findAllByOrderByIdAsc());
     }
 }
