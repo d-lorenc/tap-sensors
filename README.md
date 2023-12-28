@@ -26,39 +26,51 @@ Features:
 - A namespace
 - Privileges of an app operator, to claim services
 
-### RabbitMQ
+## Backing services:
 
-To claim RabbitMQ service:
+The following backing services are required:
+
+1. `sensors-rabbitmq` : a RabbitMQ service for the Sensor microservice to publish its measurements to. The Hub application subscribes to these measurements and stores them
+1. `sensors-db` : a PostgreSQL database used to store sensor data
+1. `appsso`: AppSSO is an abstraction provided by TAP over your platform's SSO Providers. Authentication-aware apps need to have their own bindings:
+   - `hub-appsso-claim` registers the `Hub` microservice with AppSSO
+   - `gateway-appsso-claim` registers the `Gateway` as an OAuth2 Client
+
+In order to instantiate claims for each of these microservices, run:
+
 ```shell
-tanzu service class-claim create sensors-rabbit-claim --class rabbitmq-unmanaged --namespace apps
+kubectl apply -f config/app-operator/backing-services
 ```
 
-### PostgreSQL
-
-To claim Postgres database:
-```shell
-tanzu service class-claim create sensors-db-claim --class postgresql-unmanaged --namespace apps
-```
+This will apply each of the service claim definitions to the running cluster.
 
 ## Deploying application/services
 
 ### Sensor service
-To deploy the sensor service on VMware Tanzu Application Platform, execute the following command:
+To deploy the sensor service, execute the following command:
 ```shell
 tanzu apps workload apply -f sensor/config/workload.yml
 ```
 
 ### Hub service
-To deploy the hub service on VMware Tanzu Application Platform, execute the following command:
+To deploy the hub service, execute the following command:
 ```shell
 tanzu apps workload apply -f hub/config/workload.yml
 ```
 
-You can access the application's UI using the URL shown by running the following command (provided you have DNS configured for Cloud Native Runtimes):
-
+### API Gateway
+To deploy the API Gateway, execute the following command:
 ```shell
-tanzu app workload get tap-sensors-hub
+tanzu apps workload apply -f gateway/config/workload.yml
 ```
+
+### UI
+To deploy the frontend UI app, execute the following command:
+```shell
+tanzu apps workload apply -f ui/config/workload.yml
+```
+
+Once the workloads are finished running, you may access the application by navigating to the Gateway's URL. 
 
 ## Running on local
 
