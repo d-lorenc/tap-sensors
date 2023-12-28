@@ -1,35 +1,30 @@
 package org.tapsensors.hub.config.security;
 
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2ClientProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.oauth2.jwt.JwtDecoder;
-import org.springframework.security.oauth2.jwt.JwtDecoders;
 import org.springframework.security.web.SecurityFilterChain;
+
+import java.util.List;
 
 @Configuration
 @EnableWebSecurity
-@ConditionalOnProperty(value = "spring.security.oauth2.client.provider.appsso.issuer-uri")
-public class SecurityConfig extends BaseSecurityConfig {
+public class SecurityConfig {
+    private final List<SecurityConfigurer> securityConfigurers;
+
+    public SecurityConfig(List<SecurityConfigurer> securityConfigurers) {
+        this.securityConfigurers = securityConfigurers;
+    }
+
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-        applyOauth2ResourceServer(httpSecurity);
-        applyEndpointAuthorization(httpSecurity);
+        for (SecurityConfigurer configurer : this.securityConfigurers) {
+            configurer.configure(httpSecurity);
+        }
 
         return httpSecurity.build();
     }
 
-    @Bean
-    JwtDecoder jwtDecoder(OAuth2ClientProperties oAuth2ClientProperties){
-        String issuerUri = oAuth2ClientProperties.getProvider().get("appsso").getIssuerUri();
-        return JwtDecoders.fromIssuerLocation(issuerUri);
-    }
-    @Override
-    public void applyOauth2ResourceServer(HttpSecurity httpSecurity) throws Exception {
-        httpSecurity.oauth2ResourceServer(oauth -> oauth.jwt(Customizer.withDefaults()));
-    }
+
 }
