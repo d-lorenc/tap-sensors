@@ -1,4 +1,4 @@
-package org.tapsensors.hub.config;
+package org.tapsensors.hub.config.security;
 
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.security.oauth2.client.OAuth2ClientProperties;

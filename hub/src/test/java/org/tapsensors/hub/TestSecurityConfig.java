@@ -2,7 +2,7 @@ package org.tapsensors.hub;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.tapsensors.hub.config.BaseSecurityConfig;
+import org.tapsensors.hub.config.security.BaseSecurityConfig;
 
 @Configuration
 class TestSecurityConfig extends BaseSecurityConfig {
