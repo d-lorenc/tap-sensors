@@ -16,6 +16,8 @@
 }
 
 .sensor {
+  display: flex;
+  flex-direction: column;
   color: aquamarine;
   font-family: monospace;
   min-width: 48px;

@@ -27,6 +27,12 @@ function App() {
             {
                 sensorData.map(d => (<div key={d.id} className="sensor">
                     <div className='meter'>
+                        <label>Id</label>
+                        <div className="measurement">
+                            {d.id}
+                        </div>
+                    </div>
+                    <div className='meter'>
                         <label>Temperature</label>
                         <div className="measurement">
                             {d.temperature}
