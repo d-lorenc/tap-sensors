@@ -23,10 +23,10 @@ function App() {
     }, [])
 
     return (
-        <div>
+        <div className="sensor-data">
             {
                 sensorData.map(d => (<div key={d.id}>
-                    <div>
+                    <div className="sensor">
                         <div>
                             <label>Temperature</label>
                             {d.temperature}
@@ -36,6 +36,7 @@ function App() {
                             {d.pressure}
                         </div>
                     </div>
+                    <div className={'divider'}/>
                 </div>))
             }
         </div>
