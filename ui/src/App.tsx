@@ -27,13 +27,17 @@ function App() {
             {
                 sensorData.map(d => (<div key={d.id}>
                     <div className="sensor">
-                        <div>
+                        <div className='meter'>
                             <label>Temperature</label>
-                            {d.temperature}
+                            <div className="measurement">
+                                {d.temperature}
+                            </div>
                         </div>
-                        <div>
+                        <div className='meter'>
                             <label>Pressure</label>
-                            {d.pressure}
+                            <div className="measurement">
+                                {d.pressure}
+                            </div>
                         </div>
                     </div>
                     <div className={'divider'}/>
