@@ -13,7 +13,7 @@ import org.springframework.security.oauth2.jwt.JwtDecoders;
 
 @Configuration
 @EnableWebSecurity
-@ConditionalOnProperty("spring.security.oauth2.client")
+@ConditionalOnProperty("spring.security.oauth2.client.provider")
 public class SecurityConfig extends BaseSecurityConfig {
     @Bean
     JwtDecoder jwtDecoder(OAuth2ClientProperties oAuth2ClientProperties){
