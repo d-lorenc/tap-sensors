@@ -33,6 +33,11 @@
   color: deeppink;
 }
 
+.measurement {
+  max-width: 60%;
+  text-overflow: ellipsis;
+}
+
 .divider {
   width: 100%;
   padding: 0 1rem;
