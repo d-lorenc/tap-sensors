@@ -76,6 +76,8 @@ Once the workloads are finished running, you may access the application by navig
 
 ## Running on local
 
+# This portion is out of date. Patience is appreciated as local environment setup is worked out
+
 ### Prerequisites
 
 - Java Development Kit (JDK) 17 or newer
