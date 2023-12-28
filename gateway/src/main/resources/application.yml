@@ -3,9 +3,9 @@ spring:
     gateway:
       routes:
         - id: hub_api_route
-          uri: http://tap-sensors-hub.apps.svc.cluster.local/api/
+          uri: http://tap-sensors-hub.apps.svc.cluster.local
           predicates:
-            - Path=/api/**
+            - Path=/api/**,/actuator/**
           filters:
             - TokenRelay=
         - id: hub_ui_route
