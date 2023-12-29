@@ -7,8 +7,7 @@ import org.springframework.security.config.web.server.ServerHttpSecurity;
 import org.springframework.stereotype.Component;
 
 @Component
-@ConditionalOnProperty("spring.security.oauth2.client.provider")
-@Profile("!local")
+@ConditionalOnProperty("spring.security.oauth2.client.registration")
 public class OAuth2Configurer implements SecurityConfigurer{
     @Override
     public void configure(ServerHttpSecurity httpSecurity) throws Exception {

@@ -11,11 +11,10 @@ import java.util.List;
 @Configuration
 @EnableWebFluxSecurity
 public class SecurityConfig {
+    private List<SecurityConfigurer> securityConfigurers;
     public SecurityConfig(List<SecurityConfigurer> securityConfigurers) {
         this.securityConfigurers = securityConfigurers;
     }
-
-    private List<SecurityConfigurer> securityConfigurers;
 
     @Bean
     SecurityWebFilterChain securityFilterChain(ServerHttpSecurity httpSecurity) throws Exception {
