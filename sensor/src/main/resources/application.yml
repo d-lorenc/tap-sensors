@@ -3,4 +3,4 @@ spring:
   cloud.stream.bindings:
     generateSensorData-out-0.destination: sensor-data
 server:
-  port: 8081
+  port: 8082

@@ -1,0 +1,16 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: hub_api_route
+          uri: localhost:8081
+          predicates:
+            - Path=/api/**,/actuator/**
+          filters:
+            - TokenRelay=
+        - id: hub_ui_route
+          uri: localhost:5173
+          predicates:
+            - Path=/**
+server:
+  port: 8080

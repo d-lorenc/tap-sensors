@@ -4,6 +4,7 @@ logging:
       springframework:
         security: debug
 
+
 spring:
   application.name: hub
   jpa.hibernate.ddl-auto: update
@@ -26,3 +27,5 @@ management:
       probes:
         add-additional-paths: true
         enabled: true
+server:
+  port: 8081
